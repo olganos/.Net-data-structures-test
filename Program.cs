@@ -39,11 +39,36 @@ dataStructureExamples.CleanQueue();
 stopWatch.Stop();
 
 Console.WriteLine($"Queue was cleaned in {stopWatch.Elapsed.TotalMilliseconds} miliseconds");
+Console.WriteLine();
+
+stopWatch.Reset();
+stopWatch.Start();
+dataStructureExamples.CreateLinkedList(array);
+stopWatch.Stop();
+
+Console.WriteLine($"Linked list was created in {stopWatch.Elapsed.TotalMilliseconds} miliseconds");
+
+stopWatch.Reset();
+stopWatch.Start();
+dataStructureExamples.CleanLinkeList();
+stopWatch.Stop();
+
+Console.WriteLine($"Linked list was cleaned in {stopWatch.Elapsed.TotalMilliseconds} miliseconds");
+Console.WriteLine();
+
+stopWatch.Reset();
+stopWatch.Start();
+dataStructureExamples.CreateDictionary(array);
+stopWatch.Stop();
+
+Console.WriteLine($"Dictionary was created in {stopWatch.Elapsed.TotalMilliseconds} miliseconds");
 
 public class DataStructureExamples
 {
     private Stack<int> _stack = new Stack<int>();
     private Queue<int> _queue = new Queue<int>();
+    private LinkedList<int> _linkedList = new LinkedList<int>();
+    private Dictionary<int, int> _dictionary = new Dictionary<int, int>();
 
     public void CreateStack(int[] array)
     {
@@ -75,5 +100,29 @@ public class DataStructureExamples
         {
             _queue.Dequeue();
         }
+    }
+
+    internal void CreateLinkedList(int[] array)
+    {
+        for (int index = 0; index < array.Length; index++)
+        {
+            _linkedList.AddLast(array[index]);
+        }
+    }
+
+    internal void CleanLinkeList()
+    {
+        while (_linkedList.Count != 0)
+        {
+            _linkedList.RemoveLast();
+        }
+    }
+
+    internal void CreateDictionary(int[] array)
+    {
+        for (int index = 0; index < array.Length; index++)
+        {
+            _dictionary[index] = array[index];
+        };
     }
 }
